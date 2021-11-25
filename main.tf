@@ -91,7 +91,3 @@ resource "aws_instance" "web" {
     volume_size = "16"
   }
 }
-
-output "ip" {
-  value = aws_instance.web.public_ip
-}
