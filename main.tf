@@ -82,7 +82,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_key_pair" "deployer" {
-  key_name   = "deployer-key"
+  key_name   = "ec2-key"
   public_key = "${var.ssh_key}"
 
 }
@@ -90,7 +90,7 @@ resource "aws_key_pair" "deployer" {
 resource "aws_instance" "web" {
   ami = "${data.aws_ami.ubuntu.id}"
   instance_type = "t3a.small"
-  key_name = "deployer-key"
+  key_name = "ec2-key"
   security_groups = ["allow_http", "allow_https", "allow_ssh"]
   root_block_device {
     volume_size = "16"
