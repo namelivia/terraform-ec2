@@ -1,6 +1,11 @@
-provider "aws" {
-  region = "eu-west-3"
-  shared_credentials_file = "${var.shared_credentials_file}"
+terraform {
+  required_version = ">= 1.0.11"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
 }
 
 resource "aws_security_group" "allow_http" {
